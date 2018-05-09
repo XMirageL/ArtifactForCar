@@ -21,7 +21,6 @@ public class MainPresenter {
             public void onComplete(SensorDataBean sensorDataBean) {
                 mView.showData(sensorDataBean);
             }
-
         });
     }
 }

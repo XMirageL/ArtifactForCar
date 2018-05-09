@@ -1,27 +1,29 @@
 package com.hngy.rjxh.artifactforcar;
 
+import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.blankj.utilcode.util.Utils;
-import com.hngy.rjxh.artifactforcar.fragment.HomeFragment;
 import com.hngy.rjxh.artifactforcar.fragment.ShowDatasFragment;
 import com.hngy.rjxh.artifactforcar.model.SensorDataBean;
 import com.hngy.rjxh.artifactforcar.presenter.MainPresenter;
 import com.hngy.rjxh.artifactforcar.view.IMainView;
+import com.wang.avi.AVLoadingIndicatorView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,IMainView{
     private FragmentTransaction mFragmentTransaction;
     private FragmentManager mFragmentManager;
-    private HomeFragment homeFragment;
     private ShowDatasFragment showDatasFragment;
     private MainPresenter mPresenter;
     private Button btn_start;
+    private AVLoadingIndicatorView loadingIndicatorView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initView();
     }
 
+
     private void initView() {
+        loadingIndicatorView = findViewById(R.id.avi);
         mFragmentManager = getSupportFragmentManager();//获取到fragment的管理对象
         btn_start = (Button) findViewById(R.id.btn_start);
         btn_start.setOnClickListener(this);
@@ -49,7 +53,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void showLoading() {
-        ToastUtils.showLong("正在体检");
+        loadingIndicatorView.setIndicatorColor(Color.RED);
+        ToastUtils.showShort("正在体检");
     }
 
     @Override
