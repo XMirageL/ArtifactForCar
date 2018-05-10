@@ -1,16 +1,16 @@
 package com.hngy.rjxh.artifactforcar;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.blankj.utilcode.util.Utils;
+import com.hngy.rjxh.artifactforcar.fragment.HomeFragment;
 import com.hngy.rjxh.artifactforcar.fragment.ShowDatasFragment;
 import com.hngy.rjxh.artifactforcar.model.SensorDataBean;
 import com.hngy.rjxh.artifactforcar.presenter.MainPresenter;
@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private MainPresenter mPresenter;
     private Button btn_start;
     private AVLoadingIndicatorView loadingIndicatorView;
+    private HomeFragment homeFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,8 +63,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void showData(SensorDataBean sensorDataBean) {
         mFragmentTransaction = mFragmentManager.beginTransaction();
         showDatasFragment = new ShowDatasFragment();
+        homeFragment = new HomeFragment();
         showDatasFragment.setDataBean(sensorDataBean);
-        mFragmentTransaction.add(R.id.fl_container,showDatasFragment);
+        mFragmentTransaction.add(R.id.fl_container,homeFragment);
         //提交事务，调用commit方法提交。
         mFragmentTransaction.commit();
     }
