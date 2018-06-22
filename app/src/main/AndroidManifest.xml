@@ -24,7 +24,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+    </activity>
+    <activity android:name=".Activity_Heart.Home2_Activity"
+        android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
