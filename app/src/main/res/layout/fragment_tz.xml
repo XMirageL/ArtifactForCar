@@ -51,7 +51,7 @@
                         android:layout_below="@id/rl9"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="-43dp"
-                        android:text="心率/心跳得分"
+                        android:text="血压得分"
                         android:textColor="@color/white"
                         android:textSize="10dp" />
 
@@ -88,8 +88,9 @@
                         android:layout_below="@id/rl7"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="-18dp"
-                        android:text="血压得分"
+                        android:text="体重得分"
                         android:textColor="@color/white" />
+
                     <ImageView
                         android:id="@+id/imageView2"
                         android:layout_width="24dp"
@@ -132,7 +133,7 @@
                         android:layout_below="@id/rl8"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="-43dp"
-                        android:text="体重得分"
+                        android:text="XX得分"
                         android:textColor="@color/white"
                         android:textSize="10dp" />
 

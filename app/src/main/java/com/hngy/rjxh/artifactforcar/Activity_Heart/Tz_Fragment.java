@@ -35,10 +35,11 @@ import com.hngy.rjxh.artifactforcar.rewrite.CircleProgressBar;
 import java.util.ArrayList;
 
 /**
- * Created by 57677 on 2018/6/22.
+ * Created by 57677 on 2018/6/23.
  */
 
-public class Xieya_Fragment extends Fragment implements OnChartValueSelectedListener {
+public class Tz_Fragment extends Fragment implements OnChartValueSelectedListener {
+
 
 
     private LineChart mChart;
@@ -48,18 +49,19 @@ public class Xieya_Fragment extends Fragment implements OnChartValueSelectedList
     private CircleProgressBar color_progress_view1;
     private CircleProgressBar color_progress_view2;
 
-    public Xieya_Fragment() {
+    public Tz_Fragment(){
 
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_xieya, container, false);
+        view = inflater.inflate(R.layout.fragment_tz, container, false);
         setTitle();
         bindViews();
         return view;
     }
+
 
     private void bindViews() {
 
@@ -71,31 +73,25 @@ public class Xieya_Fragment extends Fragment implements OnChartValueSelectedList
                 getActivity().finish();
             }
         });
+
         color_progress_view2 = (CircleProgressBar) view.findViewById(R.id.point_main2);
         color_progress_view2.setMaxStepNum(100);
-        color_progress_view2.update(90, 1000);
+        color_progress_view2.update(50, 1000);
         color_progress_view2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.home2_main, new Heart_Fragment())
+                getFragmentManager().beginTransaction().replace(R.id.home2_main, new Xieya_Fragment())
                         .commit();
             }
         });
 
         color_progress_view = (CircleProgressBar) view.findViewById(R.id.point_main);
         color_progress_view.setMaxStepNum(100);
-        color_progress_view.update(50, 1000);
+        color_progress_view.update(60, 1000);
 
         color_progress_view1 = (CircleProgressBar) view.findViewById(R.id.point_main1);
         color_progress_view1.setMaxStepNum(100);
-        color_progress_view1.update(60, 1000);
-        color_progress_view1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.home2_main, new Tz_Fragment())
-                        .commit();
-            }
-        });
+        color_progress_view1.update(20, 1000);
 
         //MP线表开始
         mChart = view.findViewById(R.id.chart1);
@@ -181,7 +177,7 @@ public class Xieya_Fragment extends Fragment implements OnChartValueSelectedList
             mChart.notifyDataSetChanged();
         } else {
             // create a dataset and give it a type
-            set1 = new LineDataSet(values, "血压");
+            set1 = new LineDataSet(values, "体重");
 
             set1.setDrawIcons(false);
 
@@ -222,6 +218,8 @@ public class Xieya_Fragment extends Fragment implements OnChartValueSelectedList
             mChart.setData(data);
         }
     }
+
+
 
 
     @Override

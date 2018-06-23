@@ -9,4 +9,6 @@
     <color name="home_bottom_color">#0093ee</color>
     <color name="home_title_color">#D6DDD9</color>
     <color name="white_Lavender">#E6E6FA</color>
+    <color name="white_ghost">#F3F3F3</color>
+    <color name="white_ghost1">#e6e6e6</color>
 </resources>
