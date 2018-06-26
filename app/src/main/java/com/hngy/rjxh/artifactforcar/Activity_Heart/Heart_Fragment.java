@@ -1,10 +1,15 @@
 package com.hngy.rjxh.artifactforcar.Activity_Heart;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,6 +20,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -46,6 +56,13 @@ public class Heart_Fragment extends Fragment implements OnChartValueSelectedList
     private CircleProgressBar color_progress_view;
     private CircleProgressBar color_progress_view1;
     private RelativeLayout rl_xieya;
+    private AnimationSet left_3,left_2,left_2_1;
+    private AnimationSet aset_big;
+    private ScaleAnimation sa_small_toself;
+    private TextView textView1;
+    private ImageView img_right;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
 
     public Heart_Fragment() {
     }
@@ -57,10 +74,72 @@ public class Heart_Fragment extends Fragment implements OnChartValueSelectedList
         view1 = inflater.inflate(R.layout.home2_activty, container, false);
         setTitle();
         bindviews();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ObjectAnimator animator = ObjectAnimator.ofFloat(color_progress_view, "translationX", -400f, 0);
+                animator.setDuration(2500);
+                ObjectAnimator animator1 = ObjectAnimator.ofFloat(color_progress_view1, "translationX", -400f, 0);
+                animator1.setDuration(2500);
+                ObjectAnimator animator2 = ObjectAnimator.ofFloat(color_progress_view, "scaleX", 0.1f, 1f);
+                animator2.setDuration(2500);
+                ObjectAnimator animator3 = ObjectAnimator.ofFloat(color_progress_view, "scaleY", 0.1f, 1f);
+                animator3.setDuration(2500);
+                ObjectAnimator animator4 = ObjectAnimator.ofFloat(color_progress_view, "scaleX", 1.9f, 1f);
+                animator2.setDuration(2500);
+                ObjectAnimator animator5 = ObjectAnimator.ofFloat(color_progress_view, "scaleY", 1.9f, 1f);
+                animator3.setDuration(2500);
+
+                AnimatorSet set = new AnimatorSet();
+                set.play(animator2).with(animator3).with(animator).with(animator1).with(animator4).with(animator5);
+                set.start();
+
+
+//                color_progress_view.startAnimation(left_3);
+//                color_progress_view1.startAnimation(left_3);
+//                color_progress_view.setVisibility(View.VISIBLE);
+//                color_progress_view1.setVisibility(View.VISIBLE);
+            }
+        },50);
         return view;
     }
 
     private void bindviews() {
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+
+        aset_big = new AnimationSet(true);
+        sa_small_toself = new ScaleAnimation(0, 1.0f, 0, 1.0f, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+        sa_small_toself.setDuration(2000);
+        aset_big.addAnimation(sa_small_toself);
+
+        left_3 = new AnimationSet(true);
+        TranslateAnimation aa_4 = new TranslateAnimation(-400,0,0,0);
+        aa_4.setDuration(1500);
+//        ScaleAnimation aa_31 = new ScaleAnimation(
+//                1.0f, 1.2f, 1.0f, 1.2f,
+//                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f
+//        );
+//        aa_31.setDuration(500);
+        left_3.addAnimation(aa_4);
+//        left_3.addAnimation(aa_31);
+
+        left_2 = new AnimationSet(true);
+        TranslateAnimation aa_5 = new TranslateAnimation(0,-200,0,0);
+        aa_5.setDuration(1000);
+        ScaleAnimation aa_32 = new ScaleAnimation(
+                1.0f, 0.8f, 1.0f, 0.8f,
+                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f
+        );
+        aa_32.setDuration(500);
+        left_2.addAnimation(aa_5);
+        left_2.addAnimation(aa_32);
+
+        left_2_1 = new AnimationSet(true);
+        TranslateAnimation aa_5_1 = new TranslateAnimation(400,0,0,0);
+        aa_5_1.setDuration(2000);
+        left_2_1.addAnimation(aa_5_1);
+
         fanhui_cancel = (TextView) view.findViewById(R.id.textView17);
         fanhui_cancel.bringToFront();
         fanhui_cancel.setOnClickListener(new View.OnClickListener() {
@@ -73,14 +152,39 @@ public class Heart_Fragment extends Fragment implements OnChartValueSelectedList
         color_progress_view.setMaxStepNum(100);
         color_progress_view.update(90, 1000);
         color_progress_view1 = (CircleProgressBar) view.findViewById(R.id.point_main1);
-        color_progress_view1.setMaxStepNum(100);
-        color_progress_view1.update(50, 1000);
-        rl_xieya = (RelativeLayout) view.findViewById(R.id.rl8);
-        rl_xieya.setOnClickListener(new View.OnClickListener() {
+
+        textView1 = (TextView) view.findViewById(R.id.textView1);
+        textView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.e("222","222");
+            }
+        });
+        img_right = (ImageView) view.findViewById(R.id.imageView3);
+        img_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                editor = preferences.edit();
+                editor.putString("sign_click", "right");
+                editor.apply();
                 getFragmentManager().beginTransaction().replace(R.id.home2_main, new Xieya_Fragment())
                         .commit();
+            }
+        });
+
+        color_progress_view1.setMaxStepNum(100);
+        color_progress_view1.update(50, 1000);
+
+
+//        color_progress_view.startAnimation(Sa_small_toself);
+//        color_progress_view1.startAnimation(Sa_small_toself);
+//        rl_xieya = (RelativeLayout) view.findViewById(R.id.rl8);
+        color_progress_view1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                getFragmentManager().beginTransaction().replace(R.id.home2_main, new Xieya_Fragment())
+//                        .commit();
             }
         });
 

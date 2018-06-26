@@ -2,148 +2,139 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/heart_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/heart_main"
     tools:context="com.hngy.rjxh.artifactforcar.Activity_Heart.Heart_Fragment">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <TextView
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="13dp"
             android:layout_marginLeft="13dp"
+            android:layout_marginTop="13dp"
             android:padding="8dp"
             android:text="@string/fanhui_cancel"
             android:textColor="@color/white"
-            android:textSize="21dp"
-            android:layout_alignParentLeft="true" />
+            android:textSize="21dp" />
 
-
-    <LinearLayout
-        android:background="@color/home_bottom_color"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <LinearLayout
-            android:background="@drawable/shape_blue_white"
-            android:layout_marginBottom="15dp"
-            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="0dp">
+            android:layout_height="match_parent"
+            android:background="@color/home_bottom_color"
+            android:orientation="vertical">
 
             <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="15dp"
                 android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"></RelativeLayout>
+                android:background="@drawable/shape_blue_white"
+                android:orientation="horizontal">
 
-            <RelativeLayout
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_height="match_parent">
+
+
+                    <com.hngy.rjxh.artifactforcar.rewrite.CircleProgressBar
+                        android:id="@+id/point_main"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true" />
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/point_main"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@id/rl7"
-                    android:layout_marginTop="-18dp"
+                    android:text="心率/心跳得分"
                     android:textColor="@color/white"
-                    android:text="心率/心跳得分" />
-
-                <RelativeLayout
-                    android:id="@+id/rl7"
-                    android:layout_margin="20dp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <com.hngy.rjxh.artifactforcar.rewrite.CircleProgressBar
-                        android:id="@+id/point_main"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true" />
-
-                </RelativeLayout>
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp" />
 
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_alignBottom="@+id/textView"
+                    android:layout_below="@+id/point_main"
                     android:layout_toEndOf="@+id/textView"
                     android:layout_toRightOf="@+id/textView"
                     android:src="@mipmap/info_logo" />
 
-            </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_height="match_parent">
+                    <com.hngy.rjxh.artifactforcar.rewrite.CircleProgressBar
+                        android:id="@+id/point_main1"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="88dp"
+                        android:layout_marginRight="88dp" />
+
+
                 <TextView
                     android:id="@+id/textView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@id/rl8"
-                    android:layout_marginTop="-43dp"
+                    android:layout_alignBottom="@+id/point_main"
+                    android:layout_alignEnd="@+id/point_main1"
+                    android:layout_alignRight="@+id/point_main1"
+                    android:layout_marginEnd="27dp"
+                    android:layout_marginRight="29dp"
+                    android:text="血压得分"
                     android:textColor="@color/white"
-                    android:textSize="10dp"
-                    android:text="血压得分" />
+                    android:textSize="10dp" />
 
-                <RelativeLayout
-                    android:id="@+id/rl8"
-                    android:layout_margin="45dp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_toEndOf="@+id/point_main"
+                    android:layout_toRightOf="@+id/point_main"
+                    android:src="@mipmap/arrow_right" />
 
-                    <com.hngy.rjxh.artifactforcar.rewrite.CircleProgressBar
-                        android:id="@+id/point_main1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true" />
-
-                </RelativeLayout>
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_toLeftOf="@+id/point_main"
+                    android:layout_toStartOf="@+id/point_main"
+                    android:src="@mipmap/arrow_left" />
 
 
             </RelativeLayout>
 
-        </LinearLayout>
 
-
-        <RelativeLayout
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp">
-
-
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/chart1"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
-        </RelativeLayout>
 
-    </LinearLayout>
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

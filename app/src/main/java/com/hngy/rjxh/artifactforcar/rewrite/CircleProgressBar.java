@@ -14,6 +14,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
+import android.view.animation.TranslateAnimation;
 
 import java.text.DecimalFormat;
 
@@ -220,7 +221,7 @@ public class CircleProgressBar extends View {
      *
      * @param time
      */
-    public void setAnimationTime(int time) {
-        mAnim.setDuration(time * mStepNum / mMaxStepNum);// 按照比例设置动画执行时间
+    public void setAnimationTime(TranslateAnimation time) {
+//        mAnim.setDuration(time * mStepNum / mMaxStepNum);// 按照比例设置动画执行时间
     }
 }

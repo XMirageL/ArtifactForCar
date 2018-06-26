@@ -32,11 +32,16 @@ public class Home2_Activity extends AppCompatActivity  {
                         .commit();
                 break;
             case "2":
-                getSupportFragmentManager().beginTransaction().replace(R.id.home2_main, new Xieya_Fragment())
+//                getSupportFragmentManager().beginTransaction().replace(R.id.home2_main, new Xieya_Fragment())
+//                        .commit();
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.home2_main, new Heart_Fragment())
                         .commit();
                 break;
             case "3":
-                getSupportFragmentManager().beginTransaction().replace(R.id.home2_main, new Tz_Fragment())
+//                getSupportFragmentManager().beginTransaction().replace(R.id.home2_main, new Tz_Fragment())
+//                        .commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.home2_main, new Heart_Fragment())
                         .commit();
                 break;
             case "4":

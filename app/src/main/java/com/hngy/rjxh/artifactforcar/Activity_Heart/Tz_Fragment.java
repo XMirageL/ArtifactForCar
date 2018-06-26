@@ -1,10 +1,15 @@
 package com.hngy.rjxh.artifactforcar.Activity_Heart;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -42,12 +48,17 @@ public class Tz_Fragment extends Fragment implements OnChartValueSelectedListene
 
 
 
+    private String sign_click = "";
     private LineChart mChart;
     private View view;
     private TextView fanhui_cancel;
     private CircleProgressBar color_progress_view;
     private CircleProgressBar color_progress_view1;
     private CircleProgressBar color_progress_view2;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
+    private ImageView img_left;
+    private ImageView img_right;
 
     public Tz_Fragment(){
 
@@ -59,11 +70,56 @@ public class Tz_Fragment extends Fragment implements OnChartValueSelectedListene
         view = inflater.inflate(R.layout.fragment_tz, container, false);
         setTitle();
         bindViews();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (sign_click.equals("right")){
+                    ObjectAnimator animator = ObjectAnimator.ofFloat(color_progress_view, "translationX", 400f, 0);
+                    ObjectAnimator animator3 = ObjectAnimator.ofFloat(color_progress_view, "scaleX", 0.5f, 1f);
+                    ObjectAnimator animator4 = ObjectAnimator.ofFloat(color_progress_view, "scaleY", 0.5f, 1f);
+
+                    ObjectAnimator animator1 = ObjectAnimator.ofFloat(color_progress_view1, "translationX", 400f, 0);
+                    ObjectAnimator animator5 = ObjectAnimator.ofFloat(color_progress_view1, "scaleX", 0.1f, 1f);
+                    ObjectAnimator animator6 = ObjectAnimator.ofFloat(color_progress_view1, "scaleY", 0.1f, 1f);
+
+                    ObjectAnimator animator2 = ObjectAnimator.ofFloat(color_progress_view2, "translationX", 400f, 0);
+                    ObjectAnimator animator7 = ObjectAnimator.ofFloat(color_progress_view2, "scaleX", 1.5f, 1f);
+                    ObjectAnimator animator8 = ObjectAnimator.ofFloat(color_progress_view2, "scaleY", 1.5f, 1f);
+                    AnimatorSet set = new AnimatorSet();
+                    set.play(animator).with(animator1).with(animator2).with(animator3).with(animator4).with(animator5).with(animator6).with(animator7).with(animator8);
+                    set.setDuration(2500);
+                    set.start();
+                } else {
+                    ObjectAnimator animator = ObjectAnimator.ofFloat(color_progress_view, "translationX", -400f, 0);
+                    ObjectAnimator animator3 = ObjectAnimator.ofFloat(color_progress_view, "scaleX", 0.5f, 1f);
+                    ObjectAnimator animator4 = ObjectAnimator.ofFloat(color_progress_view, "scaleY", 0.5f, 1f);
+
+                    ObjectAnimator animator1 = ObjectAnimator.ofFloat(color_progress_view1, "translationX", -400f, 0);
+                    ObjectAnimator animator5 = ObjectAnimator.ofFloat(color_progress_view1, "scaleX", 1.5f, 1f);
+                    ObjectAnimator animator6 = ObjectAnimator.ofFloat(color_progress_view1, "scaleY", 1.5f, 1f);
+
+                    ObjectAnimator animator2 = ObjectAnimator.ofFloat(color_progress_view2, "translationX", -400f, 0);
+                    ObjectAnimator animator7 = ObjectAnimator.ofFloat(color_progress_view2, "scaleX", 0.1f, 1f);
+                    ObjectAnimator animator8 = ObjectAnimator.ofFloat(color_progress_view2, "scaleY", 0.1f, 1f);
+                    AnimatorSet set = new AnimatorSet();
+                    set.play(animator).with(animator1).with(animator2).with(animator3).with(animator4).with(animator5).with(animator6).with(animator7).with(animator8);
+                    set.setDuration(2500);
+                    set.start();
+                }
+
+//                color_progress_view.startAnimation(left_3);
+//                color_progress_view1.startAnimation(left_3);
+//                color_progress_view.setVisibility(View.VISIBLE);
+//                color_progress_view1.setVisibility(View.VISIBLE);
+            }
+        },50);
         return view;
     }
 
 
     private void bindViews() {
+        preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        sign_click = preferences.getString("sign_click", "");
 
         fanhui_cancel = (TextView) view.findViewById(R.id.textView17);
         fanhui_cancel.bringToFront();
@@ -92,6 +148,30 @@ public class Tz_Fragment extends Fragment implements OnChartValueSelectedListene
         color_progress_view1 = (CircleProgressBar) view.findViewById(R.id.point_main1);
         color_progress_view1.setMaxStepNum(100);
         color_progress_view1.update(20, 1000);
+
+        img_left = (ImageView) view.findViewById(R.id.imageView4);
+        img_left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.home2_main, new Xieya_Fragment())
+                        .commit();
+                editor = preferences.edit();
+                editor.putString("sign_click", "left");
+                editor.apply();
+            }
+        });
+        img_right = (ImageView) view.findViewById(R.id.imageView3);
+        img_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                getFragmentManager().beginTransaction().replace(R.id.home2_main, new Tz_Fragment())
+//                        .commit();
+                editor = preferences.edit();
+                editor.putString("sign_click", "right");
+                editor.apply();
+            }
+        });
+
 
         //MP线表开始
         mChart = view.findViewById(R.id.chart1);

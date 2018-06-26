@@ -406,15 +406,22 @@
                         </LinearLayout>
 
                         <RelativeLayout
-                            android:layout_marginTop="30dp"
                             android:padding="5dp"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
-                            <com.github.mikephil.charting.charts.RadarChart
-                                android:id="@+id/chart1"
+                            <LinearLayout
+                                android:orientation="horizontal"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"/>
+                                android:layout_height="match_parent">
+
+                                    <com.github.mikephil.charting.charts.RadarChart
+                                        android:id="@+id/chart1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"/>
+
+
+                            </LinearLayout>
 
                         </RelativeLayout>
 

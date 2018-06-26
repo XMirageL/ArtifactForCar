@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.RadarChart;
 import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.components.XAxis;
@@ -89,14 +90,17 @@ public class HomeFragment extends Fragment {
         mChart = view.findViewById(R.id.chart1);
         mChart.setBackgroundColor(Color.rgb(230, 230, 250));
 
-        mChart.getDescription().setEnabled(false);
+//        mChart.getDescription().setEnabled(false);
 
         mChart.setWebLineWidth(3f);
+        Description description = new Description();
+        description.setText("个人健康指标图");
+        description.setTextSize(15f);
+        mChart.setDescription(description);
         mChart.setWebColor(Color.BLACK);
         mChart.setWebLineWidthInner(3f);
         mChart.setWebColorInner(Color.BLACK);
         mChart.setWebAlpha(300);
-
         setData();
 
         mChart.animateXY(2400,2400);
