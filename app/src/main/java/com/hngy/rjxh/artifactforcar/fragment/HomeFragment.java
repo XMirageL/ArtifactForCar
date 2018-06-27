@@ -1,15 +1,20 @@
 package com.hngy.rjxh.artifactforcar.fragment;
 
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.RadarChart;
@@ -27,6 +32,7 @@ import com.github.mikephil.charting.interfaces.datasets.IDataSet;
 import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet;
 import com.hngy.rjxh.artifactforcar.Activity_Heart.Home2_Activity;
 import com.hngy.rjxh.artifactforcar.Activity_Heart.More_Fragment;
+import com.hngy.rjxh.artifactforcar.Activity_Setting.setting_Activity;
 import com.hngy.rjxh.artifactforcar.R;
 
 import java.util.ArrayList;
@@ -40,6 +46,14 @@ public class HomeFragment extends Fragment {
     private LinearLayout ll_heart, ll_xieya, ll_tz, ll_more;
 
     private RadarChart mChart;
+    private TextView tv_healthy_point;
+    private TextView tv_heart_mes;
+    private TextView tv_xieya_mes;
+    private TextView tv_weight_mes;
+    private TextView tv_suggest_mes;
+    private CardView card1;
+    private CardView card3;
+    private ImageView imageView;
 
     public HomeFragment() {
 
@@ -56,6 +70,50 @@ public class HomeFragment extends Fragment {
     }
 
     private void initView(View view) {
+//        card3 = (CardView) view.findViewById(R.id.card3);
+        imageView = (ImageView) view.findViewById(R.id.imageView);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                new Setting_ItemFragment().show(getFragmentManager(), "");
+                Intent intent = new Intent(getContext(), setting_Activity.class);
+                startActivity(intent);
+            }
+        });
+        card1 = (CardView) view.findViewById(R.id.card1);
+        card1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                ViewGroup.LayoutParams layoutParams = card1.getLayoutParams();
+//                layoutParams
+//                card3.setLayoutParams(layoutParams);
+//                card3.bringToFront();
+//                ObjectAnimator animator = ObjectAnimator.ofFloat(card1, "translationX", 0, 200);
+//                ObjectAnimator animator1 = ObjectAnimator.ofFloat(card1, "translationY", 0, 200);
+//                ObjectAnimator animator2 = ObjectAnimator.ofFloat(card1, "scaleX", 1f, 2f);
+//                ObjectAnimator animator3 = ObjectAnimator.ofFloat(card1, "scaleY", 1f, 2f);
+//
+//                AnimatorSet set = new AnimatorSet();
+//                set.setDuration(2500);
+//                set.play(animator2).with(animator3).with(animator).with(animator1);
+//                set.start();
+            }
+        });
+
+        tv_healthy_point = (TextView) view.findViewById(R.id.tv_healthy_point);
+        double num_1 = Math.random() * 100;
+        tv_healthy_point.setText(String.format("%.0f",num_1));
+        tv_heart_mes = (TextView) view.findViewById(R.id.tv_heart_mes);
+        tv_heart_mes.setText(String.format("%.0f",Math.random() * 100));
+        tv_xieya_mes = (TextView) view.findViewById(R.id.tv_xieya_mes);
+        tv_xieya_mes.setText(String.format("%.0f",Math.random() * 100));
+        tv_weight_mes = (TextView) view.findViewById(R.id.tv_weight_mes);
+        tv_weight_mes.setText(String.format("%.0f",Math.random() * 100));
+
+        tv_suggest_mes = (TextView) view.findViewById(R.id.tv_suggest_mes);
+        String poi = tv_healthy_point.getText().toString();
+        tv_suggest_mes.setText("哇赛，您的身体数据击败了全国"+String.format("%.0f",num_1)+"%的人哦！身体是革命的本钱，继续加油，勇往直前，进击！");
+
         btn_start = (Button) view.findViewById(R.id.btn_start);
         ll_heart = (LinearLayout) view.findViewById(R.id.ll11);
         ll_heart.setOnClickListener(new View.OnClickListener() {

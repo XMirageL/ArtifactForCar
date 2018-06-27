@@ -7,6 +7,18 @@
                 android:background="#fff"
                 tools:context=".fragment.HomeFragment">
 
+    <!--<android.support.v7.widget.CardView-->
+        <!--android:id="@+id/card3"-->
+        <!--android:layout_width="277dp"-->
+        <!--android:layout_height="125dp"-->
+        <!--android:layout_marginTop="153dp"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--app:cardBackgroundColor="@color/white_Lavender"-->
+        <!--app:cardCornerRadius="10dp">-->
+
+
+    <!--</android.support.v7.widget.CardView>-->
+
     <LinearLayout
         android:id="@+id/ll1"
         android:layout_width="match_parent"
@@ -50,7 +62,7 @@
                             android:gravity="center"
                             android:text="NaN"
                             android:textColor="@color/white"
-                            android:textSize="70dp" />
+                            android:textSize="120dp" />
 
                         <TextView
                             android:id="@+id/tv_1"
@@ -66,14 +78,14 @@
 
                         <ImageView
                             android:id="@+id/imageView"
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginTop="14dp"
                             android:src="@mipmap/setting" />
 
                     </RelativeLayout>
@@ -133,8 +145,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_centerInParent="true"
                                     android:text="NaN"
+                                    android:textAlignment="center"
                                     android:textColor="@color/white"
-                                    android:textSize="35dp" />
+                                    android:textSize="45dp"
+                                    android:textStyle="bold" />
 
 
                             </RelativeLayout>
@@ -179,8 +193,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_centerInParent="true"
                                     android:text="NaN"
+                                    android:textAlignment="center"
                                     android:textColor="@color/white"
-                                    android:textSize="35dp" />
+                                    android:textSize="45dp"
+                                    android:textStyle="bold" />
 
 
                             </RelativeLayout>
@@ -235,8 +251,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_centerInParent="true"
                                     android:text="NaN"
+                                    android:textAlignment="center"
                                     android:textColor="@color/white"
-                                    android:textSize="35dp" />
+                                    android:textSize="45dp"
+                                    android:textStyle="bold" />
 
 
                             </RelativeLayout>
@@ -281,8 +299,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_centerInParent="true"
                                     android:text="更多"
+                                    android:textAlignment="center"
                                     android:textColor="@color/white"
-                                    android:textSize="30dp" />
+                                    android:textSize="37dp"
+                                    android:textStyle="bold" />
 
 
                             </RelativeLayout>
