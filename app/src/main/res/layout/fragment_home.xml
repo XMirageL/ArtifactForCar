@@ -376,6 +376,7 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center"
                                 android:padding="5dp"
+                                android:textSize="25dp"
                                 android:text="这里填写对驾驶者的身体健康报表以及建议"
                                 android:textAlignment="center"
                                 android:textColor="@color/black1" />

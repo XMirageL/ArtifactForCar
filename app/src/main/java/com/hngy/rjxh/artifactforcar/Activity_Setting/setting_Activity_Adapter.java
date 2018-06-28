@@ -50,4 +50,6 @@ public class setting_Activity_Adapter extends BaseAdapter {
         content.setText(mData.get(position).getText());
         return convertView;
     }
+
+
 }
